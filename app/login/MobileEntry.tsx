@@ -18,10 +18,9 @@ const MobileEntry = ({ mobile, setMobile, isLoading, onSubmit }: MobileEntryProp
     }
   };
 
-  // جلوگیری از رفتار پیش‌فرض اینتر برای جلوگیری از باگ ظاهری
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
-      e.preventDefault(); // مهم: جلوگیری از ثبت کاراکتر اینتر یا رفتار عجیب فرم
+      e.preventDefault(); 
       if (!isLoading && mobile.length >= 11) {
         onSubmit();
       }
@@ -69,14 +68,11 @@ const MobileEntry = ({ mobile, setMobile, isLoading, onSubmit }: MobileEntryProp
         fullWidth
         type="submit"
         size="lg"
-        // تغییر مهم: اضافه کردن h-14 برای فیکس کردن ارتفاع و جلوگیری از پرش
-        // و اضافه کردن flex items-center برای وسط چین ماندن لودینگ
         className="h-14 bg-gradient-to-r from-amber-500 to-amber-700 text-black font-bold shadow-[0_0_20px_rgba(245,158,11,0.2)] hover:shadow-[0_0_30px_rgba(245,158,11,0.4)] transition-all flex items-center justify-center"
         isLoading={isLoading}
         isDisabled={mobile.length < 11}
-        spinnerPlacement="end" // قرار دادن اسپینر در انتها تا ساختار دکمه نریزد
+        spinnerPlacement="end"
       >
-        {/* وقتی لودینگ فعال میشه متن غیب میشه ولی با ارتفاع فیکس دکمه تکون نمیخوره */}
         دریافت کد تایید
       </Button>
     </motion.form>

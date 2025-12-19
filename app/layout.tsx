@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Vazirmatn } from "next/font/google"; // 1. ایمپورت فونت
+import { Vazirmatn } from "next/font/google"; 
 import "./globals.css";
+import Providers from "./Providers";
 
-// 2. تنظیم فونت
 const vazir = Vazirmatn({
   subsets: ["arabic", "latin"],
   display: "swap",
-  variable: "--font-vazir", // تعریف یک متغیر CSS برای استفاده در Tailwind
+  variable: "--font-vazir", 
 });
 
 export const metadata: Metadata = {
@@ -20,10 +20,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fa" dir="rtl">
-      {/* 3. اضافه کردن متغیر فونت به بدنه و کلاس آن */}
-      <body className={`${vazir.variable}font- font-sans antialiased bg-black text-foreground`}>
-        {children}
+    <html lang="fa" dir="rtl"> 
+      <body className={`${vazir.variable} font-sans antialiased bg-black text-foreground`}>
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

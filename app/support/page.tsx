@@ -15,7 +15,6 @@ export default function Support() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // شبیه‌سازی ارسال پیام
     setTimeout(() => setLoading(false), 2000);
   };
 
@@ -27,12 +26,10 @@ export default function Support() {
 
   return (
     <div dir="rtl" className="relative min-h-screen w-full bg-black font-sans text-foreground selection:bg-amber-500/30 overflow-hidden">
-      {/* --- پس‌زمینه مشترک --- */}
       <div className="fixed inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-zinc-900/20 via-black to-black pointer-events-none" />
       <div className="fixed inset-0 opacity-[0.03] pointer-events-none"
         style={{ backgroundImage: "linear-gradient(#d4af37 1px, transparent 1px), linear-gradient(90deg, #d4af37 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
 
-      {/* افکت نور متفاوت برای صفحه پشتیبانی (آبی/طلایی) */}
       <div className="fixed top-[-10%] right-[-10%] h-[500px] w-[500px] rounded-full bg-blue-500/5 blur-[120px] pointer-events-none" />
       <div className="fixed bottom-[-10%] left-[-10%] h-[500px] w-[500px] rounded-full bg-amber-500/5 blur-[120px] pointer-events-none" />
       <Header />
@@ -40,7 +37,6 @@ export default function Support() {
       <div className="relative z-10 mx-auto max-w-6xl px-6 py-12">
 
 
-        {/* هدر */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">چطور می‌توانیم <span className="text-amber-500">کمک</span> کنیم؟</h1>
           <p className="text-zinc-400">تیم پشتیبانی گلدینو در ۷ روز هفته و ۲۴ ساعت شبانه‌روز پاسخگوی شماست.</p>
@@ -48,14 +44,12 @@ export default function Support() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-          {/* --- ستون سمت راست: اطلاعات تماس و سوالات متداول --- */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
             className="lg:col-span-5 space-y-6"
           >
-            {/* کارت‌های روش‌های تماس */}
             <div className="grid grid-cols-1 gap-4">
               {contactMethods.map((method, idx) => (
                 <a key={idx} href={method.action} className="block group">
@@ -75,7 +69,6 @@ export default function Support() {
               ))}
             </div>
 
-            {/* سوالات متداول کوچک */}
             <div className="mt-8">
               <h3 className="text-white font-bold mb-4 flex items-center gap-2">
                 <Iconify icon="solar:question-circle-bold" className="text-amber-500" />
@@ -92,7 +85,6 @@ export default function Support() {
             </div>
           </motion.div>
 
-          {/* --- ستون سمت چپ: فرم ارسال پیام --- */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -163,7 +155,6 @@ export default function Support() {
                     type="submit"
                     isLoading={loading}
                     size="lg"
-                    // اضافه کردن h-14 برای یکسان شدن ارتفاع دکمه با اینپوت‌ها
                     className="w-full h-14 bg-amber-500 text-black text-lg font-bold shadow-[0_0_20px_rgba(245,158,11,0.2)] hover:shadow-[0_0_30px_rgba(245,158,11,0.4)] transition-all"
                   >
                     ارسال پیام

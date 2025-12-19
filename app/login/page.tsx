@@ -18,7 +18,6 @@ export default function Login() {
   const [errorShake, setErrorShake] = useState(false);
   const router = useRouter();
 
-  // --- مدیریت تایمر ---
   useEffect(() => {
     let timer: NodeJS.Timeout;
     if (step === 2 && countdown > 0) {
@@ -27,21 +26,18 @@ export default function Login() {
     return () => clearTimeout(timer);
   }, [step, countdown]);
 
-  // --- هندلرها ---
   const triggerShake = () => {
     setErrorShake(true);
     setTimeout(() => setErrorShake(false), 500);
   };
 
   const handleSendOtp = async () => {
-    // اعتبارسنجی ساده شماره موبایل
     if (mobile.length < 11 || !mobile.startsWith("09")) {
       triggerShake();
       return;
     }
 
     setIsLoading(true);
-    // شبیه‌سازی درخواست API
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     setIsLoading(false);
@@ -54,13 +50,11 @@ export default function Login() {
     if (otp.length < 4) return;
 
     setIsLoading(true);
-    // شبیه‌سازی لاگین موفق
     await new Promise((resolve) => setTimeout(resolve, 1500));
     console.log("Login Success with:", otp);
     router.push("/");
     setIsLoading(false);
 
-    // اینجا ریدایرکت به صفحه Home انجام می‌شود
   };
 
   const handleResend = () => {
@@ -81,10 +75,8 @@ export default function Login() {
       dir="rtl"
       className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-black font-sans text-foreground selection:bg-amber-500/30"
     >
-      {/* --- پس‌زمینه و افکت‌ها --- */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-amber-900/20 via-black to-black" />
 
-      {/* پترن مشبک */}
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
@@ -94,11 +86,9 @@ export default function Login() {
         }}
       />
 
-      {/* نورهای محو (Orbs) */}
       <div className="pointer-events-none absolute top-[-10%] left-[-10%] h-[500px] w-[500px] rounded-full bg-amber-600/10 blur-[120px]" />
       <div className="pointer-events-none absolute bottom-[-10%] right-[-10%] h-[500px] w-[500px] rounded-full bg-yellow-500/5 blur-[120px]" />
 
-      {/* --- کارت اصلی لاگین --- */}
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{
@@ -111,12 +101,10 @@ export default function Login() {
         className="relative z-10 w-full max-w-[420px] px-4"
       >
         <Card className="border border-white/10 bg-zinc-950/70 shadow-2xl backdrop-blur-xl overflow-visible">
-          {/* خط طلایی بالای کارت */}
           <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-amber-500/50 to-transparent" />
 
           <CardBody className="flex flex-col gap-8 p-6 sm:p-8">
 
-            {/* هدر کارت (لوگو و عنوان) */}
             <div className="flex flex-col items-center text-center">
               <motion.div
                 initial={{ rotate: -10, scale: 0.9 }}
@@ -145,7 +133,6 @@ export default function Login() {
               </p>
             </div>
 
-            {/* رندر کردن مراحل فرم */}
             <div className="relative min-h-[160px]">
               <AnimatePresence mode="wait">
                 {step === 1 ? (
@@ -174,7 +161,6 @@ export default function Login() {
           </CardBody>
         </Card>
 
-        {/* فوتر پایین کارت */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -195,7 +181,6 @@ export default function Login() {
             پشتیبانی
           </Link>
         </motion.div>
-        {/* --- دکمه بازگشت --- */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

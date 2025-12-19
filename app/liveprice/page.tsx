@@ -8,7 +8,6 @@ import {
     TableBody,
     TableRow,
     TableCell,
-    User,
     Button,
     Chip,
     Input,
@@ -22,7 +21,6 @@ import { motion } from "framer-motion";
 import Iconify from "@/components/Iconify";
 import Header from "@/layout/Header";
 
-// داده‌های نمونه قیمت‌ها
 const initialData = [
     {
         id: "gold-18",
@@ -36,7 +34,7 @@ const initialData = [
         status: "up",
         category: "gold",
         icon: "mdi:gold",
-        color: "warning" // for avatar/icon bg
+        color: "warning"
     },
     {
         id: "gold-24",
@@ -124,7 +122,6 @@ const initialData = [
     },
 ];
 
-// ستون‌های جدول
 const columns = [
     { name: "نام و نماد", uid: "name" },
     { name: "آخرین قیمت (تومان)", uid: "price" },
@@ -133,7 +130,6 @@ const columns = [
     { name: "عملیات", uid: "actions" },
 ];
 
-// کامپوننت نمودار کوچک (Sparkline)
 const Sparkline = ({ status }: { status: string }) => {
     const color = status === "up" ? "#10b981" : status === "down" ? "#f43f5e" : "#71717a";
     const pathUp = "M0 20 L10 18 L20 22 L30 15 L40 12 L50 16 L60 8 L70 10 L80 5 L90 2";
@@ -161,7 +157,6 @@ export default function LivePrices() {
         return () => clearInterval(timer);
     }, []);
 
-    // فیلتر دیتا
     const filteredData = React.useMemo(() => {
         return initialData.filter((item) => {
             const matchesCategory = filter === "all" || item.category === filter;
@@ -171,7 +166,6 @@ export default function LivePrices() {
         });
     }, [filter, search]);
 
-    // تابع رندر کردن سلول‌های جدول
     const renderCell = useCallback((item: typeof initialData[0], columnKey: React.Key) => {
         switch (columnKey) {
             case "name":
@@ -251,7 +245,6 @@ export default function LivePrices() {
             dir="rtl"
             className="relative min-h-screen w-full bg-black font-sans text-foreground selection:bg-amber-500/30 overflow-hidden"
         >
-            {/* --- پس‌زمینه --- */}
             <div className="fixed inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-zinc-900/20 via-black to-black pointer-events-none" />
             <div className="fixed inset-0 opacity-[0.03] pointer-events-none"
                 style={{ backgroundImage: "linear-gradient(#d4af37 1px, transparent 1px), linear-gradient(90deg, #d4af37 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
@@ -261,7 +254,6 @@ export default function LivePrices() {
 
             <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 py-10">
 
-                {/* --- هدر صفحه: شاخص‌های کلیدی --- */}
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -285,7 +277,6 @@ export default function LivePrices() {
                         </div>
                     </div>
 
-                    {/* کارت‌های شاخص */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <Card className="bg-zinc-900/40 border border-white/5 backdrop-blur-md">
                             <CardBody className="flex flex-row items-center justify-between p-4">
@@ -318,7 +309,6 @@ export default function LivePrices() {
                     </div>
                 </motion.div>
 
-                {/* --- ابزارهای فیلتر و جستجو --- */}
                 <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-6 sticky top-24 z-20 bg-black/80 p-2 rounded-2xl border border-white/5 backdrop-blur-lg shadow-2xl">
                     <Tabs
                         aria-label="Filter"
@@ -359,7 +349,6 @@ export default function LivePrices() {
                     />
                 </div>
 
-                {/* --- جدول لیست قیمت‌ها (جایگزین شده با Table Component) --- */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -372,7 +361,7 @@ export default function LivePrices() {
                             wrapper: "bg-zinc-900/30 border border-white/5 backdrop-blur-md p-0 shadow-none overflow-x-auto",
                             th: "bg-zinc-900/80 text-zinc-400 text-xs py-4 h-12",
                             td: "text-white py-4 border-b border-white/5 group-last:border-none",
-                            table: "min-w-[600px] md:min-w-full", // For horizontal scroll on mobile
+                            table: "min-w-[600px] md:min-w-full",
                             tr: "hover:bg-zinc-800/40 transition-colors cursor-default group data-[hover=true]:bg-zinc-800/40"
                         }}
                         isStriped={false}

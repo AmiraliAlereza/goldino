@@ -47,7 +47,6 @@ export default function TermsAndConditions() {
 
     return (
         <div dir="rtl" className="relative min-h-screen w-full bg-black font-sans text-foreground selection:bg-amber-500/30 overflow-hidden">
-            {/* --- پس‌زمینه مشترک --- */}
             <div className="fixed inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-amber-900/10 via-black to-black pointer-events-none" />
             <div
                 className="fixed inset-0 opacity-[0.03] pointer-events-none"
@@ -61,7 +60,6 @@ export default function TermsAndConditions() {
             <Header />
 
             <div className="relative z-10 mx-auto max-w-4xl px-6 py-12">
-                {/* --- هدر صفحه --- */}
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -74,7 +72,6 @@ export default function TermsAndConditions() {
                     <p className="mt-3 text-zinc-400">لطفا پیش از فعالیت در گلدینو، قوانین زیر را با دقت مطالعه فرمایید.</p>
                 </motion.div>
 
-                {/* --- باکس قوانین (آکاردئون) --- */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -110,7 +107,6 @@ export default function TermsAndConditions() {
                     </Card>
                 </motion.div>
 
-                {/* --- دکمه بازگشت --- */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -128,7 +124,6 @@ export default function TermsAndConditions() {
                     </Button>
                 </motion.div>
 
-                {/* فوتر کوچک */}
                 <div className="mt-12 text-center text-[10px] text-zinc-600">
                     آخرین بروزرسانی: اردیبهشت ۱۴۰۳
                 </div>

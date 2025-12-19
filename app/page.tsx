@@ -7,7 +7,6 @@ import Iconify from "@/components/Iconify";
 import Header from "@/layout/Header";
 
 export default function Home() {
-  // اضافه کردن state برای مدیریت تب خرید و فروش
   const [tradeMode, setTradeMode] = useState<"buy" | "sell">("buy");
 
   return (
@@ -22,8 +21,8 @@ export default function Home() {
       <div className="fixed bottom-[-10%] right-[-10%] h-[500px] w-[500px] rounded-full bg-yellow-500/5 blur-[120px] pointer-events-none" />
 
       {/* --- Navbar --- */}
-      <Header />
 
+    <Header/>
       {/* --- Hero Section --- */}
       <section className="relative z-10 mx-auto max-w-7xl px-6 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
@@ -120,17 +119,15 @@ export default function Home() {
                 </button>
               </div>
 
-              {/* Inputs (Placeholders Removed) */}
               <div className="space-y-4">
                 <Input
                   type="number"
-                  // تغییر لیبل بر اساس مود خرید یا فروش برای UX بهتر
                   label={tradeMode === "buy" ? "مبلغ پرداختی (تومان)" : "مبلغ دریافتی (تومان)"}
                   labelPlacement="outside"
                   endContent={<Iconify icon="solar:wallet-linear" className="text-zinc-500" />}
                   classNames={{
                     label: "text-zinc-400 text-xs",
-                    input: "text-white font-mono", // placeholder removed styles needed
+                    input: "text-white font-mono",
                     inputWrapper: "bg-zinc-900 border-zinc-800 hover:border-amber-500/50 focus-within:!border-amber-500 h-12"
                   }}
                 />
@@ -145,12 +142,10 @@ export default function Home() {
                   type="number"
                   label={tradeMode === "buy" ? "معادل طلای دریافتی (گرم)" : "مقدار طلا برای فروش (گرم)"}
                   labelPlacement="outside"
-                  // برداشتن ReadOnly از دومی تا اگر کاربر خواست وزن را وارد کند بتواند (اختیاری)
-                  // readOnly 
                   endContent={<Iconify icon="mdi:gold" className="text-amber-500" />}
                   classNames={{
                     label: "text-zinc-400 text-xs",
-                    input: "text-amber-400 font-bold font-mono", // placeholder removed
+                    input: "text-amber-400 font-bold font-mono", 
                     inputWrapper: "bg-zinc-900 border-zinc-800 h-12"
                   }}
                 />
@@ -159,7 +154,6 @@ export default function Home() {
               <Button
                 fullWidth
                 size="lg"
-                // تغییر رنگ دکمه: خرید (طلایی/سبز) و فروش (قرمز/تیره) برای جلوگیری از اشتباه
                 className={`text-black font-bold shadow-lg transition-all ${tradeMode === "buy"
                     ? "bg-gradient-to-r from-amber-500 to-amber-600 shadow-amber-500/20"
                     : "bg-gradient-to-r from-rose-500 to-rose-600 text-white shadow-rose-500/20"

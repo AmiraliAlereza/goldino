@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import Iconify from "@/components/Iconify";
 import Header from "@/layout/Header";
 
-// داده‌های نمونه برای دسته‌بندی‌ها
 const categories = [
     {
         id: "account",
@@ -34,7 +33,6 @@ const categories = [
     },
 ];
 
-// داده‌های نمونه برای سوالات متداول
 const faqs = [
     {
         question: "آیا برای خرید طلا باید احراز هویت کنم؟",
@@ -57,7 +55,6 @@ const faqs = [
 export default function HelpCenter() {
     const [searchQuery, setSearchQuery] = useState("");
 
-    // فیلتر کردن سوالات بر اساس جستجو (ساده)
     const filteredFaqs = faqs.filter(
         (item) =>
             item.question.includes(searchQuery) || item.answer.includes(searchQuery)
@@ -68,7 +65,6 @@ export default function HelpCenter() {
             dir="rtl"
             className="relative min-h-screen w-full bg-black font-sans text-foreground selection:bg-amber-500/30 overflow-hidden"
         >
-            {/* --- پس‌زمینه مشترک --- */}
             <div className="fixed inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-zinc-900/20 via-black to-black pointer-events-none" />
             <div
                 className="fixed inset-0 opacity-[0.03] pointer-events-none"
@@ -78,14 +74,12 @@ export default function HelpCenter() {
                     backgroundSize: "40px 40px",
                 }}
             />
-            {/* نورهای پس‌زمینه مختص صفحه راهنما (سبز/طلایی برای حس آرامش و آموزش) */}
             <div className="fixed top-[-10%] right-[20%] h-[500px] w-[500px] rounded-full bg-emerald-900/10 blur-[120px] pointer-events-none" />
             <div className="fixed bottom-[-10%] left-[-10%] h-[500px] w-[500px] rounded-full bg-amber-600/10 blur-[120px] pointer-events-none" />
 
             <Header />
 
             <div className="relative z-10 mx-auto max-w-5xl px-6 py-16">
-                {/* --- بخش جستجو و هدر --- */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -126,7 +120,6 @@ export default function HelpCenter() {
                     </div>
                 </motion.div>
 
-                {/* --- شبکه دسته‌بندی‌ها (اگر جستجو خالی باشد نمایش داده می‌شود) --- */}
                 {searchQuery === "" && (
                     <motion.div
                         initial={{ opacity: 0 }}
@@ -164,7 +157,6 @@ export default function HelpCenter() {
                     </motion.div>
                 )}
 
-                {/* --- بخش سوالات متداول --- */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -218,7 +210,6 @@ export default function HelpCenter() {
                     </Card>
                 </motion.div>
 
-                {/* --- فوتر راهنما: لینک به پشتیبانی --- */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}

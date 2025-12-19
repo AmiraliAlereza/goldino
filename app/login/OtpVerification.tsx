@@ -26,7 +26,6 @@ const OtpVerification = ({
 }: OtpVerificationProps) => {
   const isComplete = otp.length === OTP_LENGTH;
 
-  // Auto-submit effect (Optional: Keep this if you want instant submit when filled)
   useEffect(() => {
     if (isComplete) {
       onVerify();
@@ -69,7 +68,7 @@ const OtpVerification = ({
 
       <div className="flex items-center justify-between text-xs px-2 text-zinc-400">
         <button
-          type="button" // Important: Prevent this from submitting the form
+          type="button"
           onClick={onEditNumber}
           disabled={isLoading}
           className="group flex items-center gap-2 transition-colors hover:text-white"
@@ -89,7 +88,7 @@ const OtpVerification = ({
           </div>
         ) : (
           <button
-            type="button" // Important: Prevent this from submitting the form
+            type="button"
             onClick={onResend}
             disabled={isLoading}
             className="flex items-center gap-1.5 text-amber-400 transition-colors hover:text-amber-300 font-medium"
